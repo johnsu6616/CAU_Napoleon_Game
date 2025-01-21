@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Script/Camera.gd" type="Script" id=2]
-[ext_resource path="res://Sprite/RPG tileset (full) v1.5.png" type="Texture" id=3]
-[ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Script/Main.gd" type="Script" id=5]
-[ext_resource path="res://enemies/Slime.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Hud/hud.tscn" type="PackedScene" id=7]
-[ext_resource path="res://hindrance-124376.mp3" type="AudioStream" id=8]
-[ext_resource path="res://enemies/Enemies_spawner.tscn" type="PackedScene" id=14]
+[ext_resource type="PackedScene" path="res://Player.tscn" id="1"]
+[ext_resource type="Script" path="res://Script/Camera.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://ddggfrflna3nq" path="res://Sprite/RPG tileset (full) v1.5.png" id="3"]
+[ext_resource type="PackedScene" path="res://Hud/fpsDisplay.tscn" id="4"]
+[ext_resource type="Script" path="res://Script/Main.gd" id="5"]
+[ext_resource type="PackedScene" path="res://enemies/Slime.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://Hud/hud.tscn" id="7"]
+[ext_resource type="AudioStream" uid="uid://d1gvg672enrx1" path="res://hindrance-124376.mp3" id="8"]
+[ext_resource type="PackedScene" path="res://enemies/Enemies_spawner.tscn" id="14"]
 
 [sub_resource type="TileSet" id=1]
 0/name = "RPG tileset (full) v1.5.png 0"
@@ -49,7 +49,7 @@ tile_data = PoolIntArray( -2555924, 0, 0, -2555923, 0, 1, -2555922, 0, 1, -25559
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 325, 190 )
 
-[node name="AnimatedSprite" parent="Player" index="1"]
+[node name="AnimatedSprite2D" parent="Player" index="1"]
 frame = 2
 
 [node name="detectEnemies" parent="Player" index="4"]
@@ -58,43 +58,43 @@ visible = true
 [node name="CollisionShape2D" parent="Player/detectEnemies" index="0"]
 visible = false
 
-[node name="Camera" type="Camera2D" parent="."]
+[node name="Camera3D" type="Camera2D" parent="."]
 position = Vector2( 512, 297 )
 current = true
 script = ExtResource( 2 )
 
-[node name="hud" parent="Camera" instance=ExtResource( 7 )]
+[node name="hud" parent="Camera3D" instance=ExtResource( 7 )]
 
-[node name="levelUp" parent="Camera/hud/CanvasLayer/CanvasLayer" index="0"]
-pause_mode = 2
+[node name="levelUp" parent="Camera3D/hud/CanvasLayer/CanvasLayer" index="0"]
+process_mode = 3
 
-[node name="Spear" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="0"]
-margin_right = 86.0
+[node name="Spear" parent="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="0"]
+offset_right = 86.0
 
-[node name="UpgradeSpear" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="1"]
-margin_left = 90.0
-margin_right = 155.0
+[node name="UpgradeSpear" parent="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="1"]
+offset_left = 90.0
+offset_right = 155.0
 
-[node name="Axe" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="2"]
-margin_right = 86.0
+[node name="Axe" parent="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="2"]
+offset_right = 86.0
 
-[node name="UpgradeAxe" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="3"]
-margin_left = 90.0
-margin_right = 155.0
+[node name="UpgradeAxe" parent="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="3"]
+offset_left = 90.0
+offset_right = 155.0
 
-[node name="Skip" parent="Camera/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="6"]
-margin_right = 86.0
+[node name="Skip" parent="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp/GridContainer2" index="6"]
+offset_right = 86.0
 
-[node name="fps" parent="Camera" instance=ExtResource( 4 )]
-margin_left = -512.0
-margin_top = -297.0
-margin_right = -512.0
-margin_bottom = -297.0
+[node name="fps" parent="Camera3D" instance=ExtResource( 4 )]
+offset_left = -512.0
+offset_top = -297.0
+offset_right = -512.0
+offset_bottom = -297.0
 
-[node name="Label" parent="Camera/fps" index="0"]
-margin_top = 43.0
-margin_right = 56.0
-margin_bottom = 57.0
+[node name="Label" parent="Camera3D/fps" index="0"]
+offset_top = 43.0
+offset_right = 56.0
+offset_bottom = 57.0
 
 [node name="Node" type="Node" parent="."]
 
@@ -115,32 +115,32 @@ position = Vector2( -44, 191 )
 
 [node name="Enemies_spawners" parent="." instance=ExtResource( 14 )]
 
-[node name="Spawner" type="Position2D" parent="Enemies_spawners"]
+[node name="Spawner" type="Marker2D" parent="Enemies_spawners"]
 position = Vector2( -19, 667 )
 
-[node name="Spawner2" type="Position2D" parent="Enemies_spawners"]
+[node name="Spawner2" type="Marker2D" parent="Enemies_spawners"]
 position = Vector2( 1076, -6 )
 
-[node name="Spawner3" type="Position2D" parent="Enemies_spawners"]
+[node name="Spawner3" type="Marker2D" parent="Enemies_spawners"]
 position = Vector2( 970, 642 )
 
-[node name="Spawner4" type="Position2D" parent="Enemies_spawners"]
+[node name="Spawner4" type="Marker2D" parent="Enemies_spawners"]
 position = Vector2( -76, -45 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 
-[connection signal="gold" from="Player" to="Camera/hud" method="_on_Player_gold"]
-[connection signal="hp" from="Player" to="Camera/hud" method="_on_Player_hp"]
-[connection signal="level" from="Player" to="Camera/hud/CanvasLayer/CanvasLayer/levelUp" method="_on_Player_level"]
-[connection signal="weapons" from="Player" to="Camera/hud" method="_on_Player_weapons"]
-[connection signal="xp" from="Player" to="Camera/hud" method="_on_Player_xp"]
-[connection signal="axeLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_axeLvlUp"]
-[connection signal="daggerLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_daggerLvlUp"]
-[connection signal="spearLvlUp" from="Camera/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_spearLvlUp"]
+[connection signal="gold" from="Player" to="Camera3D/hud" method="_on_Player_gold"]
+[connection signal="hp" from="Player" to="Camera3D/hud" method="_on_Player_hp"]
+[connection signal="level" from="Player" to="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp" method="_on_Player_level"]
+[connection signal="weapons" from="Player" to="Camera3D/hud" method="_on_Player_weapons"]
+[connection signal="xp" from="Player" to="Camera3D/hud" method="_on_Player_xp"]
+[connection signal="axeLvlUp" from="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_axeLvlUp"]
+[connection signal="daggerLvlUp" from="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_daggerLvlUp"]
+[connection signal="spearLvlUp" from="Camera3D/hud/CanvasLayer/CanvasLayer/levelUp" to="Player" method="_on_levelUp_spearLvlUp"]
 
 [editable path="Player"]
 [editable path="Player/hurtbox"]
-[editable path="Camera/hud"]
-[editable path="Camera/fps"]
+[editable path="Camera3D/hud"]
+[editable path="Camera3D/fps"]

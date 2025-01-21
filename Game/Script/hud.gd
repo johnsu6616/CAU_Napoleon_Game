@@ -8,9 +8,9 @@ var armor = Save.gameData.player.armor * 2;
 var xp = 0;
 var max_xp = 30;
 
-var spear_sprite = preload("res://Sprite/Spear.png");
-var axe_sprite = preload("res://Sprite/axe.png");
-var dagger_sprite = preload("res://Sprite/dagger.png");
+var spear_sprite = preload("res://Sprite2D/Spear.png");
+var axe_sprite = preload("res://Sprite2D/axe.png");
+var dagger_sprite = preload("res://Sprite2D/dagger.png");
 
 func _ready():
 	update();

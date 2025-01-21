@@ -1,16 +1,16 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Script/Menu.gd" type="Script" id=1]
-[ext_resource path="res://Font/Roboto-Black.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Sprite/chinese-coin.png" type="Texture" id=3]
-[ext_resource path="res://Hud/fpsDisplay.tscn" type="PackedScene" id=4]
-[ext_resource path="res://a-hero-of-the-80s-126684.mp3" type="AudioStream" id=5]
+[ext_resource type="Script" path="res://Script/Menu.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://dtfl7fl3dradl" path="res://Font/Roboto-Black.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://ytr5joryfdgi" path="res://Sprite/chinese-coin.png" id="3"]
+[ext_resource type="PackedScene" path="res://Hud/fpsDisplay.tscn" id="4"]
+[ext_resource type="AudioStream" uid="uid://dkm6wh4m0cjsu" path="res://a-hero-of-the-80s-126684.mp3" id="5"]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 20
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 25
 font_data = ExtResource( 2 )
 
@@ -27,13 +27,13 @@ color = Color( 0.172549, 0.0352941, 0.0352941, 1 )
 [node name="Label" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -155.0
-margin_top = 137.0
-margin_bottom = 14.0
-custom_fonts/font = SubResource( 2 )
+offset_left = -155.0
+offset_top = 137.0
+offset_bottom = 14.0
+theme_override_fonts/font = SubResource( 2 )
 text = "Gold: 10"
 
-[node name="Chinese-coin" type="Sprite" parent="Label"]
+[node name="Chinese-coin" type="Sprite2D" parent="Label"]
 position = Vector2( 98, 13 )
 scale = Vector2( 0.0346679, 0.0341796 )
 texture = ExtResource( 3 )
@@ -41,14 +41,14 @@ texture = ExtResource( 3 )
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -226.0
-margin_right = 226.0
-margin_bottom = 159.0
+offset_left = -226.0
+offset_right = 226.0
+offset_bottom = 159.0
 
 [node name="Title" type="Label" parent="VBoxContainer2"]
-margin_right = 452.0
-margin_bottom = 201.0
-custom_fonts/font = SubResource( 1 )
+offset_right = 452.0
+offset_bottom = 201.0
+theme_override_fonts/font = SubResource( 1 )
 text = "
 
 Napoleon
@@ -63,53 +63,53 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = -56.0
-margin_right = 251.0
-margin_bottom = 114.0
-custom_constants/separation = 29
+offset_left = -250.0
+offset_top = -56.0
+offset_right = 251.0
+offset_bottom = 114.0
+theme_override_constants/separation = 29
 alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
-margin_top = 1.0
-margin_right = 501.0
-margin_bottom = 21.0
-focus_neighbour_top = NodePath("../Exit")
+offset_top = 1.0
+offset_right = 501.0
+offset_bottom = 21.0
+focus_neighbor_top = NodePath("../Exit")
 text = "Play"
 
 [node name="Player Stats" type="Button" parent="VBoxContainer"]
-margin_top = 50.0
-margin_right = 501.0
-margin_bottom = 70.0
+offset_top = 50.0
+offset_right = 501.0
+offset_bottom = 70.0
 text = "Player Stats"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
-margin_top = 99.0
-margin_right = 501.0
-margin_bottom = 119.0
+offset_top = 99.0
+offset_right = 501.0
+offset_bottom = 119.0
 text = "Settings"
 
 [node name="Exit" type="Button" parent="VBoxContainer"]
-margin_top = 148.0
-margin_right = 501.0
-margin_bottom = 168.0
-focus_neighbour_bottom = NodePath("../Play")
+offset_top = 148.0
+offset_right = 501.0
+offset_bottom = 168.0
+focus_neighbor_bottom = NodePath("../Play")
 text = "Exit"
 
 [node name="Control" parent="." instance=ExtResource( 4 )]
-rect_pivot_offset = Vector2( 168, 288 )
+pivot_offset = Vector2( 168, 288 )
 
 [node name="Time" type="OptionButton" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 340.0
-margin_top = -117.0
-margin_right = 490.0
-margin_bottom = -97.0
-rect_min_size = Vector2( 150, 20 )
-focus_neighbour_top = NodePath("../Return")
+offset_left = 340.0
+offset_top = -117.0
+offset_right = 490.0
+offset_bottom = -97.0
+custom_minimum_size = Vector2( 150, 20 )
+focus_neighbor_top = NodePath("../Return")
 size_flags_horizontal = 10
 text = "2 mins"
 items = [ "2 mins", null, false, 0, null, "5 mins", null, false, 1, null, "10 mins", null, false, 2, null ]
